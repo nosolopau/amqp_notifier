@@ -6,7 +6,7 @@ AmqpNotifier is a helper library to wrap Qusion with the AMQP gem.
 
 To use this version, add this to your Gemfile:
 
-  gem "amqp_notifier", "0.0.1", :git => "git://github.com/nosolopau/amqp_notifier.git"
+  gem "amqp_notifier", "0.0.2", :git => "git://github.com/nosolopau/amqp_notifier.git"
 
 
 == Use
