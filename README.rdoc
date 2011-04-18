@@ -4,13 +4,12 @@ AmqpNotifier is a helper library to wrap Qusion with the AMQP gem
 
 == Use
 === Publish
-<pre><code>
-AmqpNotifier.new('exchange', 'queue').publish('routing_key', 'message')
-</code></pre>
+
+  AmqpNotifier.new('exchange', 'queue').publish('routing_key', 'message')
 
 === Subscribe
-<pre><code>
-a = AmqpNotifier.new('exchange', 'queue').subscribe('routing_key') do |info, message|
-  puts message
-end
-</code></pre>
+
+  a = AmqpNotifier.new('exchange', 'queue').subscribe('routing_key') do |info, message|
+    puts message
+  end
+
