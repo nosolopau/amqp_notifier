@@ -8,13 +8,13 @@ Run this command:
 
   gem install amqp-notifier
 
-To use this version, add this to your Gemfile:
-
-  gem "amqp_notifier", "0.0.2", :git => "git://github.com/nosolopau/amqp_notifier.git"
-
 If you want to get the lastest version, add:
 
-  gem "amqp_notifier", "0.0.2", :git => "git://github.com/nosolopau/amqp_notifier.git"
+  gem "amqp_notifier", :git => "git://github.com/nosolopau/amqp_notifier.git"
+
+To use this version, add this to your Gemfile:
+
+  gem "amqp_notifier", "0.0.3", :git => "git://github.com/nosolopau/amqp_notifier.git"
 
 == Use
 
