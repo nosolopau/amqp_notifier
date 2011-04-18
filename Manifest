@@ -1,3 +1,5 @@
-Rakefile
-lib/amqp_notifier.rb
 Manifest
+README.rdoc
+Rakefile
+amqp_notifier.gemspec
+lib/amqp_notifier.rb
