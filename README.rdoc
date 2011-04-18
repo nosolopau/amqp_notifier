@@ -1,3 +1,5 @@
+= AmqpNotifier
+
 AmqpNotifier is a helper library to wrap Qusion with the AMQP gem
 
 == Use
