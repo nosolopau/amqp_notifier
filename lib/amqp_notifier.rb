@@ -17,8 +17,13 @@ class AmqpNotifier
   
   def subscribe(key = '', &block)
     Qusion.channel.prefetch(1).queue(@queue, :durable => true).bind(Qusion.channel.topic(@exchange, @options), :key => key).subscribe(:ack => true) do |info, message|
-      yield info, message
-      info.ack
+      begin
+        yield info, message
+        1/0 if message == "crash"
+        info.ack
+      rescue
+        info.reject(:requeue => true)
+      end
     end
   end
 end
