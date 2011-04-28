@@ -23,7 +23,9 @@ class AmqpNotifier
           yield info, message
           info.ack
           break
-        rescue
+        rescue => e
+          Rails.logger.error(e.inspect)
+          Rails.logger.error(e.backtrace)
           if i == RETRIES
             AmqpNotifier.new("#{@exchange}_errors").publish(key, message)
             info.reject(:requeue => false)
