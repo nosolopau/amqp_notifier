@@ -13,6 +13,8 @@ class AmqpNotifier
   end
   
   def publish(key = '', message = '')
+    Rails.logger.error("#{key}:")
+    Rails.logger.error("#{message}")
     Qusion.channel.topic(@exchange, @options).publish(message, :key => @key_prefix + key)
   end
   
@@ -24,8 +26,8 @@ class AmqpNotifier
           info.ack
           break
         rescue => e
-          Rails.logger.error(e.inspect)
-          Rails.logger.error(e.backtrace)
+          Rails.logger.error("#{e.inspect}:")
+          Rails.logger.error("#{e.backtrace}")
           if i == RETRIES
             AmqpNotifier.new("#{@exchange}_errors").publish(key, message)
             info.reject(:requeue => false)
