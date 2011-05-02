@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{amqp_notifier}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Pau"]
-  s.date = %q{2011-04-18}
+  s.date = %q{2011-05-02}
   s.description = %q{AMQP & Qusion helper class}
   s.email = %q{pau@nosolopau.com}
   s.extra_rdoc_files = ["README.rdoc", "lib/amqp_notifier.rb"]
