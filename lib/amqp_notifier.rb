@@ -15,7 +15,7 @@ class AmqpNotifier
   def publish(key = '', message = '')
     $stderr.puts "#{key}:"
     $stderr.puts "#{message}"
-    Qusion.channel.topic(@exchange, @options).publish(message, {:key => @key_prefix + key, :timestamp => (Time.now.to_f*1000).truncate)
+    Qusion.channel.topic(@exchange, @options).publish(message, {:key => @key_prefix + key, :timestamp => (Time.now.to_f*1000).truncate})
   end
   
   def subscribe(key = '', &block)
