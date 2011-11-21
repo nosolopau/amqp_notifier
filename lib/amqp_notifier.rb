@@ -19,7 +19,7 @@ class AmqpNotifier
   end
   
   def subscribe(key = '', &block)
-    $stdout.puts "Subscriction to Exchange: #{@exchange} Queue: #{@queue} Key: #{key}"
+    $stdout.puts "Subscription to Exchange: #{@exchange} Queue: #{@queue} Key: #{key}"
     Qusion.channel.prefetch(1).queue(@queue, :durable => true).bind(Qusion.channel.topic(@exchange, @options), :key => key).subscribe(:ack => true) do |info, message|
       for i in (0..RETRIES)
         begin
@@ -31,8 +31,12 @@ class AmqpNotifier
           $stderr.puts "#{e.inspect}:"
           e.backtrace.each {|line| $stderr.puts line}
           if i == RETRIES
-            AmqpNotifier.new("#{@exchange}_errors").publish(key, message)
-            info.reject(:requeue => false)
+            begin
+              AmqpNotifier.new("#{@exchange}_errors").publish(key, message)
+              info.reject(:requeue => false)
+            rescue
+              $stderr.puts "Error sending message to exchange #{@exchange}_errors"
+            end
           else
             sleep(1)          
             next
